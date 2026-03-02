@@ -1,0 +1,372 @@
+/* Component Styles */
+
+/* Upload Container */
+.upload-container {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.upload-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+/* Drag Drop Area */
+.drag-drop-area {
+  border: 3px dashed #cbd5e0;
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #f7fafc;
+  margin-bottom: 1.5rem;
+}
+
+.drag-drop-area:hover:not(:disabled) {
+  border-color: #667eea;
+  background-color: #eef2ff;
+}
+
+.drag-drop-area.active {
+  border-color: #667eea;
+  background-color: #e0e7ff;
+  transform: scale(1.02);
+}
+
+.drag-drop-label {
+  display: block;
+  cursor: pointer;
+  user-select: none;
+}
+
+.drag-drop-label .icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.drag-drop-label h3 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.drag-drop-label p {
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.drag-drop-label small {
+  color: #999;
+  display: block;
+}
+
+/* File Info */
+.file-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f9ff;
+  border: 1px solid #bae6fd;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.file-name {
+  color: #0369a1;
+  font-weight: 500;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #0369a1;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.remove-btn:hover:not(:disabled) {
+  color: #ef4444;
+}
+
+.remove-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Optional Section */
+.optional-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid #e2e8f0;
+}
+
+.optional-section h3 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.optional-section p {
+  color: #666;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Ground Truth Upload */
+.ground-truth-upload {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.file-select-label {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background-color: #f3f4f6;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+  text-align: center;
+  font-weight: 500;
+  color: #333;
+}
+
+.file-select-label:hover {
+  border-color: #667eea;
+  background-color: #eef2ff;
+}
+
+.remove-btn-small {
+  padding: 0.5rem 1rem;
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.remove-btn-small:hover:not(:disabled) {
+  background-color: #fecaca;
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Preview Container */
+.preview-container {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.preview-container.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  gap: 1rem;
+}
+
+.preview-container.loading p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.preview-section h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Image Comparison */
+.image-comparison {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.image-box {
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #f7fafc;
+}
+
+.image-box h4 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.preview-image {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.divider {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #cbd5e0;
+}
+
+/* Metrics Panel */
+.metrics-panel {
+  background-color: #f0f9ff;
+  border: 2px solid #bae6fd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.metrics-panel h4 {
+  margin-bottom: 1rem;
+  color: #0369a1;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.metric-box {
+  background: white;
+  border: 1px solid #bae6fd;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.metric-box h5 {
+  color: #0369a1;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.metric-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.metric-item label {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.metric-item .value {
+  color: #0369a1;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.action-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.action-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.action-btn {
+  background-color: #e2e8f0;
+  color: #333;
+}
+
+.action-btn:hover {
+  background-color: #cbd5e0;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .upload-container,
+  .preview-container {
+    padding: 1rem;
+  }
+
+  .image-comparison {
+    grid-template-columns: 1fr;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+
+  .ground-truth-upload {
+    flex-direction: column;
+  }
+
+  .remove-btn-small {
+    width: 100%;
+  }
+}
