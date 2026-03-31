@@ -1,0 +1,9 @@
+{
+  "buildCommand": "pip install -r requirements.txt",
+  "startCommand": "uvicorn app:app --host 0.0.0.0 --port $PORT",
+  "envs": {
+    "API_HOST": "0.0.0.0",
+    "FLASK_ENV": "production",
+    "ENABLE_CORS": "True"
+  }
+}

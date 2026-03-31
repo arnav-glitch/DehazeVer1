@@ -19,11 +19,11 @@
 <p align="center">
   <a href="#-features">Features</a> •
   <a href="#-architecture">Architecture</a> •
-  <a href="#-demo">Demo</a> •
   <a href="#-quick-start">Quick Start</a> •
+  <a href="./DEPLOYMENT.md">📖 Deployment Guide</a> •
+  <a href="./QUICK_DEPLOY.md">⚡ Quick Deploy</a> •
   <a href="#-model-details">Model</a> •
-  <a href="#-api-reference">API</a> •
-  <a href="#-metrics">Metrics</a>
+  <a href="#-api-reference">API</a>
 </p>
 
 ---
