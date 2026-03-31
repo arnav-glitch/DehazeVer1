@@ -7,9 +7,34 @@ load_dotenv()
 
 # Path configuration
 BASE_DIR = Path(__file__).resolve().parent.parent
-MODEL_PATH = os.getenv("MODEL_PATH", str(BASE_DIR / "maxim_savedmodel"))
-ADAPTER_PATH = os.getenv("ADAPTER_PATH", str(BASE_DIR / "adapter_best.weights.h5"))
-AOD_NET_PATH = os.getenv("AOD_NET_PATH", str(BASE_DIR / "adapter_aod.weights.h5"))
+
+# Helper function to find model path (check multiple locations)
+def get_model_path(env_var, default_name):
+    """Get model path from env var or check multiple standard locations."""
+    if env_var in os.environ:
+        return os.getenv(env_var)
+    
+    # Check multiple fallback locations
+    possible_paths = [
+        BASE_DIR / default_name,  # Local: Dehaze/maxim_savedmodel
+        BASE_DIR / "backend" / default_name,  # In backend folder
+        Path("/app/models") / default_name,  # HF Spaces download location
+    ]
+    
+    for path in possible_paths:
+        if path.exists():
+            return str(path)
+            
+    # If in Hugging Face Space, models will be downloaded to /app/models momentarily
+    if "SPACE_ID" in os.environ:
+        return str(Path("/app/models") / default_name)
+    
+    # Return first choice (will fail later if not found)
+    return str(possible_paths[0])
+
+MODEL_PATH = get_model_path("MODEL_PATH", "maxim_savedmodel")
+ADAPTER_PATH = get_model_path("ADAPTER_PATH", "adapter_best.weights.h5")
+AOD_NET_PATH = get_model_path("AOD_NET_PATH", "adapter_aod.weights.h5")
 
 # API configuration
 API_PORT = int(os.getenv("API_PORT", 5001))
