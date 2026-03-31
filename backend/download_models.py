@@ -2,7 +2,7 @@
 from huggingface_hub import snapshot_download, hf_hub_download
 import os
 
-REPO_ID = "Arnoobie/dehaze-models"  # Replace with your HuggingFace username
+REPO_ID = "Arnoobie/dehaze-models"  # HuggingFace model repository
 MODEL_DIR = "/app/models"
 
 def download_models():

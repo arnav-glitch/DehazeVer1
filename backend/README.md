@@ -1,3 +1,12 @@
+---
+title: Dehaze AI Backend
+emoji: 🌫️
+colorFrom: blue
+colorTo: gray
+sdk: docker
+pinned: false
+---
+
 # Dehaze Backend - Setup & Installation Guide
 
 ## Quick Start
@@ -44,7 +53,7 @@ python test_metrics.py
 python app.py
 ```
 
-The API will be available at `http://localhost:5000`
+The API will be available at `http://localhost:5000` (or `http://localhost:7860` on HuggingFace Spaces)
 
 ## Project Structure
 
