@@ -15,6 +15,13 @@ from inference import load_models, process_image_bytes
 from metrics import calculate_metrics, format_metrics_report
 from PIL import Image
 
+# Download models from HuggingFace at startup
+try:
+    from download_models import download_models
+    download_models()
+except Exception as e:
+    print(f"⚠ Model download warning: {e}")
+
 # Initialize FastAPI app
 app = FastAPI(
     title="Dehaze API",
@@ -33,7 +40,7 @@ if ENABLE_CORS:
     )
 
 # Global models cache
-models = {"base_model": None, "adapter": None}
+models = {"base_model": None, "adapter": None, "aod_net": None, "midas": None, "midas_transform": None}
 
 
 @app.on_event("startup")
@@ -45,8 +52,19 @@ async def startup_event():
     
     try:
         global models
-        models["base_model"], models["adapter"] = load_models()
+        base, adapter, aod_net, midas, midas_tf = load_models()
+        models["base_model"] = base
+        models["adapter"] = adapter
+        models["aod_net"] = aod_net
+        models["midas"] = midas
+        models["midas_transform"] = midas_tf
         print("✓ Models loaded successfully")
+        if aod_net is not None:
+            print("✓ AOD-Net refinement layer loaded")
+        if midas is not None:
+            print("✓ Depth-aware dehazing enabled (MiDaS)")
+        else:
+            print("⚠ Depth-aware dehazing disabled (MiDaS unavailable)")
         print("=" * 60 + "\n")
     except Exception as e:
         print(f"✗ Failed to load models: {e}")
@@ -93,7 +111,10 @@ async def dehaze_image(file: UploadFile = File(...)):
         dehazed_image, processing_time_ms = process_image_bytes(
             image_bytes,
             models["base_model"],
-            models["adapter"]
+            models["adapter"],
+            models["aod_net"],
+            models["midas"],
+            models["midas_transform"]
         )
         
         # Convert to base64
@@ -147,7 +168,10 @@ async def dehaze_with_metrics(
         dehazed_image, processing_time_ms = process_image_bytes(
             hazy_bytes,
             models["base_model"],
-            models["adapter"]
+            models["adapter"],
+            models["aod_net"],
+            models["midas"],
+            models["midas_transform"]
         )
         
         # Convert dehazed to base64
